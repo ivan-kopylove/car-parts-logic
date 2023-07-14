@@ -12,7 +12,7 @@ public class Util
         final String prodKey = System.getenv("CAR_PARTS_TELEGRAM_BOT_PROD");
         if (!prodKey.isBlank())
         {
-            return devKey;
+            return prodKey;
         }
         throw new RuntimeException("Invalid configuration");
     }
