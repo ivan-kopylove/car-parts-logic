@@ -1,4 +1,4 @@
-package com.kopylove.ivan.car.parts.carparts;
+package com.kopylove.car.parts;
 
 import com.github.lazyf1sh.telegram.api.client.TelegramClient;
 import com.github.lazyf1sh.telegram.api.domain.GetMe;
@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 
+import static com.kopylove.car.parts.Contsant.CHOOSE_RELEVANT;
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -22,10 +24,14 @@ public class BotStarter
     private static final Logger LOGGER = LoggerFactory.getLogger(BotStarter.class);
 
     private final TelegramClient telegramClient;
+    private final CommandHandler commandHandler;
+    private final CommandMapper  commandMapper;
 
-    public BotStarter(final TelegramClient telegramClient)
+    public BotStarter(final TelegramClient telegramClient, CommandHandler commandHandler, CommandMapper commandMapper)
     {
         this.telegramClient = telegramClient;
+        this.commandHandler = commandHandler;
+        this.commandMapper = commandMapper;
     }
 
     public void start() throws URISyntaxException, IOException, InterruptedException
@@ -53,19 +59,34 @@ public class BotStarter
                         Message message = update.getMessage();
                         if (message != null)
                         {
-                            telegramClient.sendSingleMessage("abc",
-                                                             message.getChat()
-                                                                    .getId());
+                            List<String> handle = commandHandler.handle(commandMapper.mapCommand(message.getText()));
+                            for (String s : handle)
+                            {
+                                telegramClient.sendSingleMessage(s,
+                                                                 message.getChat()
+                                                                        .getId());
+                            }
+
+                            telegramClient.sendSingleButton(message.getChat()
+                                                                   .getId(), CHOOSE_RELEVANT, "VIM", "button_callback");
                         }
+
                         LOGGER.info("Processed update in {} ms.", System.currentTimeMillis() - start);
                     }
                 }
-                catch (IOException | InterruptedException e)
+                catch (Throwable e)
                 {
                     LOGGER.error("", e);
-                    throw new RuntimeException(e);
+                    try
+                    {
+                        Thread.sleep(5000);
+                    }
+                    catch (InterruptedException ex)
+                    {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
-        }, 0, 10, SECONDS);
+        }, 0, 5, SECONDS);
     }
 }

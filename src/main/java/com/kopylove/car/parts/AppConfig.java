@@ -1,4 +1,4 @@
-package com.kopylove.ivan.car.parts.carparts;
+package com.kopylove.car.parts;
 
 import com.github.lazyf1sh.telegram.api.client.TelegramClient;
 import org.springframework.context.annotation.Bean;
