@@ -51,4 +51,12 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>ivan-kopylove_github</id>
+            <name>ivan-kopylove_github</name>
+            <url>https://maven.pkg.github.com/ivan-kopylove</url>
+        </repository>
+    </repositories>
+
 </project>
