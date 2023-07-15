@@ -1,4 +1,4 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

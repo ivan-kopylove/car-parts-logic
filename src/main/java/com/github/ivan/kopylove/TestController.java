@@ -1,4 +1,4 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

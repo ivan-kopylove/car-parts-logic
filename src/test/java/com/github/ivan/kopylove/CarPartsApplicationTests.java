@@ -1,4 +1,4 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

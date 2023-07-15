@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <groupId>com.kopylove</groupId>
+    <groupId>com.github.ivan.kopylove</groupId>
     <artifactId>car-parts</artifactId>
     <version>snapshot</version>
     <name>car-parts</name>
@@ -35,7 +35,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.ivan_kopylove</groupId>
+            <groupId>com.github.ivan.kopylove</groupId>
             <artifactId>telegram-client</artifactId>
             <version>snapshot</version>
         </dependency>

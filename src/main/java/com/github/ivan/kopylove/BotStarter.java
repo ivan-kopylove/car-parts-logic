@@ -1,10 +1,10 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
-import com.github.lazyf1sh.telegram.api.client.TelegramClient;
-import com.github.lazyf1sh.telegram.api.domain.GetMe;
-import com.github.lazyf1sh.telegram.api.domain.GetUpdate;
-import com.github.lazyf1sh.telegram.api.domain.Message;
-import com.github.lazyf1sh.telegram.api.domain.Update;
+import com.github.ivan.kopylove.telegram.api.client.TelegramClient;
+import com.github.ivan.kopylove.telegram.api.domain.GetMe;
+import com.github.ivan.kopylove.telegram.api.domain.GetUpdate;
+import com.github.ivan.kopylove.telegram.api.domain.Message;
+import com.github.ivan.kopylove.telegram.api.domain.Update;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,8 +14,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 
-import static com.kopylove.car.parts.Constant.CHOOSE_RELEVANT;
-import static com.kopylove.car.parts.Constant.VIN;
+import static com.github.ivan.kopylove.Constant.CHOOSE_RELEVANT;
+import static com.github.ivan.kopylove.Constant.VIN;
 import static java.lang.System.currentTimeMillis;
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;

@@ -1,4 +1,4 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
 public class Util
 {

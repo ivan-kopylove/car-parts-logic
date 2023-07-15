@@ -1,11 +1,11 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
-import com.github.lazyf1sh.telegram.api.client.TelegramClient;
+import com.github.ivan.kopylove.telegram.api.client.TelegramClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.github.lazyf1sh.telegram.api.client.TelegramClient.telegramClient;
-import static com.kopylove.car.parts.Util.getTelegramApiKey;
+import static com.github.ivan.kopylove.telegram.api.client.TelegramClient.telegramClient;
+import static com.github.ivan.kopylove.Util.getTelegramApiKey;
 
 @Configuration
 public class AppConfig {

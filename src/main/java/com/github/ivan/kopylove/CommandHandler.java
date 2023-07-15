@@ -1,11 +1,11 @@
-package com.kopylove.car.parts;
+package com.github.ivan.kopylove;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kopylove.car.parts.Constant.*;
+import static com.github.ivan.kopylove.Constant.*;
 
 @Service
 public class CommandHandler
