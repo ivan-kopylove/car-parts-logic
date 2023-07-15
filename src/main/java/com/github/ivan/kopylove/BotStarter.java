@@ -81,6 +81,7 @@ public class BotStarter
                 }
                 catch (InterruptedException ex)
                 {
+                    LOGGER.error("InterruptedException", ex);
                     throw new RuntimeException(ex);
                 }
             }
