@@ -43,49 +43,44 @@ public class BotStarter
 
         final ScheduledExecutorService ses = newScheduledThreadPool(1);
 
-        ses.scheduleAtFixedRate(new Runnable()
-        {
-            @Override
-            public void run()
+        ses.scheduleAtFixedRate(() -> {
+            try
             {
-                try
+                final GetUpdate getUpdate = telegramClient.getUpdate();
+
+                for (final Update update : getUpdate.getResult())
                 {
-                    final GetUpdate getUpdate = telegramClient.getUpdate();
+                    final long start = currentTimeMillis();
 
-                    for (final Update update : getUpdate.getResult())
+                    LOGGER.info("update {}", update);
+                    Message message = update.getMessage();
+                    if (message != null)
                     {
-                        final long start = currentTimeMillis();
-
-                        LOGGER.info("update {}", update);
-                        Message message = update.getMessage();
-                        if (message != null)
+                        List<String> handle = commandHandler.handle(commandMapper.mapCommand(message.getText()));
+                        for (String s : handle)
                         {
-                            List<String> handle = commandHandler.handle(commandMapper.mapCommand(message.getText()));
-                            for (String s : handle)
-                            {
-                                telegramClient.sendSingleMessage(s,
-                                                                 message.getChat()
-                                                                        .getId());
-                            }
-
-                            telegramClient.sendSingleButton(message.getChat()
-                                                                   .getId(), CHOOSE_RELEVANT, "VIM", "button_callback");
+                            telegramClient.sendSingleMessage(s,
+                                                             message.getChat()
+                                                                    .getId());
                         }
 
-                        LOGGER.info("Processed update in {} ms.", currentTimeMillis() - start);
+                        telegramClient.sendSingleButton(message.getChat()
+                                                               .getId(), CHOOSE_RELEVANT, "VIM", "button_callback");
                     }
+
+                    LOGGER.info("Processed update in {} ms.", currentTimeMillis() - start);
                 }
-                catch (Throwable e)
+            }
+            catch (Throwable e)
+            {
+                LOGGER.error("", e);
+                try
                 {
-                    LOGGER.error("", e);
-                    try
-                    {
-                        Thread.sleep(5000);
-                    }
-                    catch (InterruptedException ex)
-                    {
-                        throw new RuntimeException(ex);
-                    }
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException ex)
+                {
+                    throw new RuntimeException(ex);
                 }
             }
         }, 0, 5, SECONDS);
