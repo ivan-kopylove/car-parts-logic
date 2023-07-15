@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 
 import static com.kopylove.car.parts.Contsant.CHOOSE_RELEVANT;
+import static java.lang.System.currentTimeMillis;
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -53,7 +54,7 @@ public class BotStarter
 
                     for (final Update update : getUpdate.getResult())
                     {
-                        final long start = System.currentTimeMillis();
+                        final long start = currentTimeMillis();
 
                         LOGGER.info("update {}", update);
                         Message message = update.getMessage();
@@ -71,7 +72,7 @@ public class BotStarter
                                                                    .getId(), CHOOSE_RELEVANT, "VIM", "button_callback");
                         }
 
-                        LOGGER.info("Processed update in {} ms.", System.currentTimeMillis() - start);
+                        LOGGER.info("Processed update in {} ms.", currentTimeMillis() - start);
                     }
                 }
                 catch (Throwable e)
