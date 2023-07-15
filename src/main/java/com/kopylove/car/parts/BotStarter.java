@@ -14,7 +14,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 
-import static com.kopylove.car.parts.Contsant.CHOOSE_RELEVANT;
+import static com.kopylove.car.parts.Constant.CHOOSE_RELEVANT;
+import static com.kopylove.car.parts.Constant.VIN;
 import static java.lang.System.currentTimeMillis;
 import static java.util.concurrent.Executors.newScheduledThreadPool;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -65,7 +66,7 @@ public class BotStarter
                         }
 
                         telegramClient.sendSingleButton(message.getChat()
-                                                               .getId(), CHOOSE_RELEVANT, "VIM", "button_callback");
+                                                               .getId(), CHOOSE_RELEVANT, VIN, "button_callback");
                     }
 
                     LOGGER.info("Processed update in {} ms.", currentTimeMillis() - start);
