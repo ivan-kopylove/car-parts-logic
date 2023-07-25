@@ -10,5 +10,6 @@ class CarPartsApplicationTests
     @Test
     void contextLoads()
     {
+        System.setProperty("CAR_PARTS_TELEGRAM_BOT_DEV", "");
     }
 }
