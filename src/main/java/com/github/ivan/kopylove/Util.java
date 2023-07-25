@@ -4,6 +4,10 @@ public class Util
 {
     public static String getTelegramApiKey()
     {
+        if ("true".equals(System.getenv("CAR_PARTS_TELEGRAM_BOT_DEV_MODE")))
+        {
+            return "devModeKey";
+        }
 
         final String devKey = System.getenv("CAR_PARTS_TELEGRAM_BOT_DEV");
         if (!devKey.isBlank())
