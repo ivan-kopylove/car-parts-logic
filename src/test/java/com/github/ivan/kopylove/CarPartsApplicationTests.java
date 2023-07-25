@@ -1,5 +1,7 @@
 package com.github.ivan.kopylove;
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CarPartsApplicationTests
 {
 
-    @Test
+    @BeforeAll
     void contextLoads()
     {
         System.setProperty("CAR_PARTS_TELEGRAM_BOT_DEV", "");
