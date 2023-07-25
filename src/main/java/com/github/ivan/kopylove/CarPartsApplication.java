@@ -13,6 +13,8 @@ public class CarPartsApplication
 
     public static void main(final String[] args) throws URISyntaxException, IOException, InterruptedException
     {
+        System.setProperty("CAR_PARTS_TELEGRAM_BOT_DEV_MODE", "true");
+
         ConfigurableApplicationContext run = SpringApplication.run(CarPartsApplication.class, args);
         BotStarter bean = run.getBean(BotStarter.class);
         bean.start();
